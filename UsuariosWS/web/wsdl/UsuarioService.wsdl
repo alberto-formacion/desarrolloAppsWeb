@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://ws" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://ws" xmlns:intf="http://ws" xmlns:tns1="http://vo" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://ws" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://vo"/>
+   <element name="getUsuarios">
+    <complexType/>
+   </element>
+   <element name="getUsuariosResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="getUsuariosReturn" type="tns1:Usuario"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://vo" xmlns="http://www.w3.org/2001/XMLSchema">
+   <complexType name="Usuario">
+    <sequence>
+     <element name="apellidos" nillable="true" type="xsd:string"/>
+     <element name="email" nillable="true" type="xsd:string"/>
+     <element name="nombre" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="getUsuariosRequest">
+
+      <wsdl:part element="impl:getUsuarios" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getUsuariosResponse">
+
+      <wsdl:part element="impl:getUsuariosResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="UsuarioService">
+
+      <wsdl:operation name="getUsuarios">
+
+         <wsdl:input message="impl:getUsuariosRequest" name="getUsuariosRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getUsuariosResponse" name="getUsuariosResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="UsuarioServiceSoapBinding" type="impl:UsuarioService">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="getUsuarios">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getUsuariosRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getUsuariosResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="UsuarioServiceService">
+
+      <wsdl:port binding="impl:UsuarioServiceSoapBinding" name="UsuarioService">
+
+         <wsdlsoap:address location="http://localhost:8080/UsuariosWS/services/UsuarioService"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
